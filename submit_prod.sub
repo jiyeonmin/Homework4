@@ -1,0 +1,17 @@
+#!/bin/csh
+
+#SBATCH -J mdcpt
+#SBATCH -o file.o%j
+#SBATCH -e file.e%j
+#SBATCH -N 1
+#SBATCH -n 20
+#SBATCH -t 2:00:00
+#SBATCH --constraint="rhel8"
+#SBATCH --mail-user=jmin7@umd.edu
+#SBATCH --mail-type=all
+#SBATCH -A bioe464
+
+module load gromacs/2019.4/gcc
+
+cd /lustre/bioe464-1v2m/hw6
+mpirun -np 20 gmx_mpi mdrun -s md.tpr -c npt.gro -e md.edr -o md.trr -cpi md.cpt -cpo md.cpt -g md.log -noappend

@@ -1,0 +1,17 @@
+#!/bin/csh
+
+#SBATCH -J file
+#SBATCH -o file.o%j
+#SBATCH -e file.e%j
+#SBATCH -N 1
+#SBATCH -n 20
+#SBATCH -t 1:00:00
+#SBATCH --constraint="rhel8"
+#SBATCH -A bioe464
+#SBATCH --mail-user=jmin7@umd.edu
+#SBATCH --mail-type=all
+
+module load gromacs/2019.4/gcc
+
+cd /lustre/bioe464-1v2m/hw6
+mpirun -np 20 gmx_mpi mdrun -s nvt.tpr -c 1Q21_solv_ions.part0001.gro -e nvt.edr -o nvt.trr -cpi nvt.cpt -cpo nvt.cpt -g nvt.log -noappend

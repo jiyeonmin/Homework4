@@ -1,0 +1,15 @@
+#!/bin/csh
+
+#SBATCH -J file
+#SBATCH -o file.o%j
+#SBATCH -e file.e%j
+#SBATCH -N 1
+#SBATCH -n 20
+#SBATCH -t 1:00:00
+#SBATCH --constraint="rhel8"
+#SBATCH -A bioe464
+
+module load gromacs/2019.4/gcc
+
+cd /lustre/bioe464-1v2m/hw6_tmp
+mpirun -np 20 gmx_mpi mdrun -s npt.tpr -c 1Q21_solv_ions.part0001.part0001.gro -e npt.edr -o npt.trr -cpi npt.cpt -cpo npt.cpt -g npt.log -noappend

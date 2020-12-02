@@ -1,0 +1,20 @@
+#!/bin/csh
+
+#SBATCH -J file
+#SBATCH -o file.o%j
+#SBATCH -e file.e%j
+#SBATCH -N 1
+#SBATCH -n 20
+#SBATCH -t 0:05:00
+#SBATCH -p debug
+#SBATCH --reservation=bioeres2
+#SBATCH --constraint="rhel8"
+#SBATCH --mail-user=username@umd.edu
+#SBATCH --mail-type=all
+#SBATCH -A bioe464
+
+module load gromacs/2019.4/gcc
+
+cd /lustre/matysiak/class2019/
+mpirun -np 20 gmx_mpi mdrun -s em.tpr -c 1AKI_solv_ions.gro -e em.edr -o em.trr -cpi em.cpt -cpo em.cpt -g em.log -noappend
+

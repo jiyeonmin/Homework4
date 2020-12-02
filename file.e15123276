@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+                      :-) GROMACS - gmx mdrun, 2019.4 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov      Paul Bauer     Herman J.C. Berendsen
+    Par Bjelkmar      Christian Blau   Viacheslav Bolnykh     Kevin Boyd    
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra       Alan Gray     
+  Gerrit Groenhof     Anca Hamuraru    Vincent Hindriksen  M. Eric Irrgang  
+  Aleksei Iupinov   Christoph Junghans     Joe Jordan     Dimitrios Karkoulis
+    Peter Kasson        Jiri Kraus      Carsten Kutzner      Per Larsson    
+  Justin A. Lemkul    Viveca Lindahl    Magnus Lundborg     Erik Marklund   
+    Pascal Merz     Pieter Meulenhoff    Teemu Murtola       Szilard Pall   
+    Sander Pronk      Roland Schulz      Michael Shirts    Alexey Shvetsov  
+   Alfons Sijbers     Peter Tieleman      Jon Vincent      Teemu Virolainen 
+ Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2018, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, version 2019.4
+Executable:   /software/spack-software/2020.05.14/linux-rhel8-ivybridge/gcc-8.4.0/gromacs-2019.4-kqgxphamuomftdyljwez7dufzqyq2dze/bin/gmx_mpi
+Data prefix:  /software/spack-software/2020.05.14/linux-rhel8-ivybridge/gcc-8.4.0/gromacs-2019.4-kqgxphamuomftdyljwez7dufzqyq2dze
+Working dir:  /lustre/bioe464-1v2m/hw6_tmp
+Command line:
+  gmx_mpi mdrun -s npt.tpr -c 1Q21_solv_ions.part0001.part0001.gro -e npt.edr -o npt.trr -cpi npt.cpt -cpo npt.cpt -g npt.log -noappend
+
+Reading file npt.tpr, VERSION 2019.4 (single precision)
+Changing nstlist from 10 to 80, rlist from 1 to 1.097
+
+Using 20 MPI processes
+Using 1 OpenMP thread per MPI process
+
+
+Non-default thread affinity set probably by the OpenMP library,
+disabling internal thread affinity
+starting mdrun 'C-H-RAS P21 PROTEIN CATALYTIC DOMAIN in water'
+200000 steps,    200.0 ps.
+[compute-b24-39.deepthought2.umd.edu:3610439] 19 more processes have sent help message help-mpi-common-cuda.txt / dlopen failed
+[compute-b24-39.deepthought2.umd.edu:3610439] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Writing final coordinates.
+
+
+Dynamic load balancing report:
+ DLB was turned on during the run due to measured imbalance.
+ Average load imbalance: 1.8%.
+ The balanceable part of the MD step is 91%, load imbalance is computed from this.
+ Part of the total run time spent waiting due to load imbalance: 1.6%.
+ Steps where the load balancing was limited by -rdd, -rcon and/or -dds: X 0 % Y 0 %
+ Average PME mesh/force load: 0.628
+ Part of the total run time spent waiting due to PP/PME imbalance: 6.7 %
+
+NOTE: 6.7 % performance was lost because the PME ranks
+      had less work to do than the PP ranks.
+      You might want to decrease the number of PME ranks
+      or decrease the cut-off and the grid spacing.
+
+
+               Core t (s)   Wall t (s)        (%)
+       Time:    13497.666      674.894     2000.0
+                 (ns/day)    (hour/ns)
+Performance:       25.604        0.937
+
+GROMACS reminds you: "She's a Good Sheila Bruce" (Monty Python)
+
